@@ -19,10 +19,10 @@ return new class extends Migration
             $table->date('tgl_pinjam');
             $table->date('tgl_pengembalian');
             $table->string('peminjam');
-            $table->enum('status', ['masih di pinjam', 'sudah di kembalikan'])->default('masih di pinjam');
+            $table->string('status');
             $table->string('petugas');
             $table->string('noKtp');
-            $table->foreignIdFor(Car::class);
+            $table->foreignIdfor(Car::class,'car_id');
             $table->timestamps();
         });
     }

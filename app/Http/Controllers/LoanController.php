@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 Use App\Models\Loan;
-Use App\Models\Car;
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Validation\Rule;
@@ -46,7 +46,7 @@ class LoanController extends Controller
             "tgl_pinjam" => ['required', 'date'],
             "tgl_pengembalian" => ['required', 'date'],
             "peminjam" => ['required'],
-            "status" => ['required', Rule::in(['masih di pinjam', 'sudah di kembalikan'])],
+            "status" => ['required'],
             "petugas" => ['required'],
             "noKtp" => ['required'],
             "car_id" => ['required', 'exists:cars,id']  // Aturan validasi untuk car_id
@@ -61,20 +61,29 @@ class LoanController extends Controller
     public function edit($id)
     {
         $loans = Loan::find($id);
+        $cars = Car::find($id);
         $data = [
-            'loans' => $loans
+            'loans' => $loans,
+            'cars' => $cars,
         ];
         return view('peminjaman.edit', $data);
     }
     public function update(Request $request, $id)
     {
-        $loan = Loan::find($id);
-        $loan->update($request->all());
+        $loans = Loan::find($id);
+        $cars = Car::find($id);
+        $data = [
+            'loans' => $loans,
+            'cars' => $cars
+        ];
+        $loans->update($request->all());
+        $cars->update($request->all());
         return redirect()->to('/loan');
     }
     public function deleteData($id)
     {
         $loans = Loan::find($id);
+        $cars = Car::find($id);
         $loans->delete();
         return redirect()->to('/loan');
     }

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Loan;
 
+
 class LoanSeeder extends Seeder
 {
     /**
@@ -21,20 +22,21 @@ class LoanSeeder extends Seeder
                 'peminjam' => 'Muhammad Firman Yusuf',
                 'status' => 'masih di pinjam',
                 'petugas' => 'agus',
-                'noKtp' => '123445645'
+                'noKtp' => '123445645',
+                'car_id' => '1'
 
             ]
         ];
         foreach ($loans as $loan) {
             Loan::Create([
                 "notransaksi" => $loan["notransaksi"],
-                "cars_id" => $loan["cars_id"],
                 "tgl_pinjam" => $loan["tgl_pinjam"],
                 "tgl_pengembalian" => $loan["tgl_pengembalian"],
                 "peminjam" => $loan["peminjam"],
                 "status" => $loan["status"],
                 "petugas" => $loan["petugas"],
-                "noKtp" => $loan["noKtp"]
+                "noKtp" => $loan["noKtp"],
+                "car_id" => $loan["car_id"]
             ]);
         }
     }

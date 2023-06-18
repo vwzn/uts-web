@@ -1,6 +1,14 @@
 @extends('layout.app')
 
 @section('content')
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+                <li class="breadcrumb-item active"><a href="{{ '/' }}"
+                        class="text-decoration-none text-dark">Home</a></li>
+            </ol>
+        </nav>
+    </div>
     <main class="container">
         <div class="h2">TABLE CARS</div>
         <table class="table table-dark table-hover table-striped">
@@ -23,7 +31,8 @@
                         <td class="text-center">{{ $car->pemilik }}</td>
                         <td class="text-center">{{ $car->stok }}</td>
                         <td class="text-center">
-                            <a href="{{ 'delete/' . $car->id }}" class="btn btn-danger">Delete</a>
+                            <a href="{{ 'delete/' . $car->id }}" class="btn btn-danger"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">Delete</a>
                             <a href="{{ 'edit/' . $car->id }}" class="btn btn-primary">Edit</a>
                         </td>
                     </tr>

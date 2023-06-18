@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Ahmad Fauzan</title>
 </head>
 
@@ -155,6 +161,41 @@
         /* 3rem adalah tinggi padding dari div */
         overflow-y: auto;
     }
+
+    .btn-primary.hover:hover {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        transition: all 0.3s ease-in-out
+    }
+
+
+    .btn-success.hover:hover {
+        background-color: #198754;
+        border-color: #198754;
+        transition: all 0.3s ease-in-out
+    }
+
+
+    .btn-danger.hover:hover {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: all 0.3s ease-in-out
+    }
+
+    .costum-footer:hover {
+        background-color: #343a40;
+        color: #f8f9fa;
+        transition: all 0.6s ease-in-out;
+    }
+
+    .costum-card:hover {
+        background-color: #343a40;
+        color: #f8f9fa;
+        transition: all 0.6s ease-in-out;
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+    }
 </style>
 <link href="sidebars.css" rel="stylesheet">
 </head>
@@ -162,7 +203,7 @@
 <body class="">
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand fw-bold">mySewa.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -171,7 +212,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ '/' }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
@@ -191,7 +232,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
+                        <button class="btn btn-toggle btn-dark" id="dark-mode-toggle"><i class="fa fa-moon"></i> Dark
+                            Mode</button>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -303,64 +345,47 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        (() => {
-            'use strict'
-            const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            tooltipTriggerList.forEach(tooltipTriggerEl => {
-                new bootstrap.Tooltip(tooltipTriggerEl)
-            })
-        })()
-        (() => {
-            'use strict'
+        const toggleSwitch = document.querySelector('#dark-mode-toggle');
+        const body = document.body;
+        const darkModeStorageKey = 'dark-mode';
 
-            feather.replace({
-                'aria-hidden': 'true'
-            })
+        // cek status di storage browser
+        const isDarkMode = localStorage.getItem(darkModeStorageKey);
 
-            // Graphs
-            const ctx = document.getElementById('myChart')
-            // eslint-disable-next-line no-unused-vars
-            const myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: [
-                        'Sunday',
-                        'Monday',
-                        'Tuesday',
-                        'Wednesday',
-                        'Thursday',
-                        'Friday',
-                        'Saturday'
-                    ],
-                    datasets: [{
-                        data: [
-                            15339,
-                            21345,
-                            18483,
-                            24003,
-                            23489,
-                            24092,
-                            12034
-                        ],
-                        lineTension: 0,
-                        backgroundColor: 'transparent',
-                        borderColor: '#007bff',
-                        borderWidth: 4,
-                        pointBackgroundColor: '#007bff'
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            boxPadding: 3
-                        }
-                    }
-                }
-            })
-        })()
+        // set mode gelap
+        function enableDarkMode() {
+            body.classList.add('text-bg-dark');
+            body.querySelectorAll('table').forEach(table => table.classList.add('table-dark'));
+            toggleSwitch.innerHTML = '<i class="fa fa-sun"></i> Light Mode';
+            localStorage.setItem(darkModeStorageKey, 'enabled');
+            document.querySelector('main').classList.add('text-bg-dark');
+            document.querySelector('.d-flex.align-items-center.pb-3.mb-3.link-body-emphasis.text-decoration-none.border-bottom').classList.add('text-bg-dark');
+        }
+
+        // set mode terang
+        function disableDarkMode() {
+            body.classList.remove('text-bg-dark');
+            body.querySelectorAll('table').forEach(table => table.classList.remove('table-dark'));
+            toggleSwitch.innerHTML = '<i class="fa fa-moon"></i> Dark Mode';
+            localStorage.setItem(darkModeStorageKey, 'disabled');
+            localStorage.setItem(darkModeStorageKey, 'disabled');
+            document.querySelector('main').classList.remove('text-bg-dark');
+            document.querySelector('.d-flex.align-items-center.pb-3.mb-3.link-body-emphasis.text-decoration-none.border-bottom').classList.remove('text-bg-dark');
+        }
+
+        // atur mode gelap sesuai status yang ada di storage browser
+        if (isDarkMode === 'enabled') {
+            enableDarkMode();
+        }
+
+        // toggle mode gelap
+        toggleSwitch.addEventListener('click', function() {
+            if (body.classList.contains('text-bg-dark')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
     </script>
 </body>
 
