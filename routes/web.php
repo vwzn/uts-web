@@ -25,18 +25,19 @@ Route::controller(CarController::class)->group(
         Route::get('delete/{id}', 'deleteData');
         Route::put('/update/{id}', [CarController::class, 'update'])->name('car.update');
         Route::post('/store', 'store');
+        Route::get('/search', [CarController::class, 'search'])->name('car.search');
     }
 );
 
 Route::controller(LoanController::class)->group(
     function () {
         Route::get('/loan', 'dataPeminjaman')->name('peminjaman.index');
-        Route::get('/loan/buatPeminjaman', 'buatPeminjaman')->name('peminjaman.buat');;
-        Route::get('/loan/tambahData', 'tambahData')->name('peminjaman.create');
+        Route::get('/loan/buatPeminjaman', 'buatPeminjaman')->name('peminjaman.buat');  
         Route::post('/loan/store', 'store');
         Route::get('/loan/edit/{id}', 'edit')->name('peminjaman.edit');
         Route::put('/loan/update/{id}', [LoanController::class, 'update'])->name('peminjaman.update');
         Route::get('/loan/delete/{id}', 'deleteData');
+        Route::get('/loan/search', [LoanController::class, 'search'])->name('peminjaman.search');
     }
 );
 Route::controller(DashboardController::class)->group(

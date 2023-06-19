@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('petugas');
             $table->string('noKtp');
             $table->foreignIdfor(Car::class,'car_id');
+            $table->date('tgl_pengembalian_sebenarnya')->nullable();
             $table->timestamps();
         });
     }

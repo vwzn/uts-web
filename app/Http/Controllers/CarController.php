@@ -81,4 +81,17 @@ class CarController extends Controller
         $car->update($request->all());
         return redirect()->to('/');
     }
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $cars = Car::query()
+            ->where('nopol', 'LIKE', "%{$search}%")
+            ->orWhere('color', 'LIKE', "%{$search}%")
+            ->orWhere('pemilik', 'LIKE', "%{$search}%")
+            ->orWhere('stok', 'LIKE', "%{$search}%")
+            ->get();
+
+        return view('car.index', compact('cars'));
+    }
 }

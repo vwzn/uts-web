@@ -13,28 +13,84 @@
             </ol>
         </nav>
     </div>
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="card-title text-capitalize">menu peminjaman</h4>
-            <a href="{{ route('peminjaman.index') }}" class="text-muted text-capitalize">back</a>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <h1>Add Peminjaman</h1>
         </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="" class="text-capitalize">Peminjam</label>
-                <select name="" id="" class="form-control">
-                    @foreach ($loans as $loan)
-                        <option value="">{{ $loan->peminjam }}</option>
-                    @endforeach
-                </select>
+    </nav>
+    <main class="container scrollarea" data-bs-spy="scroll" data-bs-target="#navId">
+        <form action="{{ 'store' }}" method="post">
+            @csrf
+            <div class="mb-3">
+                <label for="notransaksi" class="form-label">notransaksi</label>
+                <input type="text" class="form-control" name="notransaksi" id="notransaksi" placeholder="notransaksi"
+                    value="{{ old('notransaksi') }}">
+                @error('notransaksi')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
-            <div class="form-group">
-                <label for="" class="text-capitalize">Tanggal Pinjam</label>
-                <select name="" id="" class="form-control">
-                    @foreach ($loans as $loan)
-                        <option value="">{{ $loan->tgl_pinjam }}</option>
-                    @endforeach
-                </select>
+            <div class="mb-3">
+                <label for="tgl_pinjam" class="form-label">tgl_pinjam</label>
+                <input type="date" class="form-control" name="tgl_pinjam" id="tgl_pinjam" placeholder="tgl_pinjam"
+                    value="{{ old('tgl_pinjam') }}">
+                @error('tgl_pinjam')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
-        </div>
-    </div>
+            <div class="mb-3">
+                <label for="tgl_pengembalian" class="form-label">tgl_pengembalian</label>
+                <input type="date" class="form-control" name="tgl_pengembalian" id="tgl_pengembalian"
+                    placeholder="tgl_pengembalian" value="{{ old('tgl_pengembalian') }}">
+                @error('tgl_pengembalian')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="peminjam" class="form-label">peminjam</label>
+                <input type="text" class="form-control" name="peminjam" id="peminjam" placeholder="peminjam"
+                    value="{{ old('peminjam') }}">
+                @error('peminjam')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="masih di pinjam" {{ old('status') === 'masih di pinjam' ? 'selected' : '' }}>masih di
+                        pinjam</option>
+                    <option value="sudah di kembalikan" {{ old('status') === 'sudah di kembalikan' ? 'selected' : '' }}>
+                        sudah di kembalikan</option>
+                </select>
+                @error('status')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+            </div>
+            <div class="mb-3">
+                <label for="petugas" class="form-label">petugas</label>
+                <input type="text" class="form-control" name="petugas" id="petugas" placeholder="petugas"
+                    value="{{ old('petugas') }}">
+                @error('petugas')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="noKtp" class="form-label">noKtp</label>
+                <input type="text" class="form-control" name="noKtp" id="noKtp" placeholder="noKtp"
+                    value="{{ old('noKtp') }}">
+                @error('noKtp')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="car_id" class="form-label">car_id</label>
+                <input type="text" class="form-control" name="car_id" id="car_id" placeholder="car_id"
+                    value="{{ old('car_id') }}">
+                @error('car_id')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </main>
 @endsection

@@ -10,7 +10,13 @@
         </nav>
     </div>
     <main class="container">
-        <div class="h2">TABLE CARS</div>
+        <div class="d-flex justify-content-between mb-3">
+            <div class="h2">TABLE CARS</div>
+            <form action="{{ url('/search') }}" method="GET" class="form-inline d-flex">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
         <table class="table table-dark table-hover table-striped">
             <thead>
                 <tr>

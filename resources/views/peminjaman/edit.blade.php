@@ -58,8 +58,8 @@
                 <input type="text" class="form-control" name="noKtp" id="noKtp" value="{{ $loans->noKtp }}">
             </div>
             <div class="mb-3">
-                <label for="color" class="form-label">Mobil</label>
-                <input type="text" class="form-control" name="color" id="color" value="{{ $cars->color }}">
+                <label for="car_id" class="form-label">ID Car</label>
+                <input type="text" class="form-control" name="car_id" id="car_id" value="{{ $loans->car_id }}">
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

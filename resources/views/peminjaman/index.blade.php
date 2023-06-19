@@ -11,7 +11,13 @@
             </ol>
         </nav>
     </div>
-    <div class="h2">SEWA KENDARAAN</div>
+    <div class="d-flex justify-content-between mb-3">
+        <div class="h2">SEWA KENDARAAN</div>
+        <form action="{{ url('/loan/search') }}" method="GET" class="form-inline d-flex">
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 
 
     @if (session('Success'))
@@ -35,6 +41,7 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach ($loans as $loan)
                 <tr>
                     <td class="text-center">{{ $loan->id }}</td>
@@ -47,11 +54,13 @@
                     <td class="text-center">{{ $loan->petugas }}</td>
                     <td class="text-center">{{ $loan->noKtp }}</td>
                     @foreach ($cars as $car)
-                        <td class="text-center">{{ $car->color }}</td>
+                        @if ($car->id == $loan->car_id)
+                            <td class="text-center">{{ $car->color }}</td>
+                        @endif
                     @endforeach
                     <td class="text-center">
-                        <a href="{{ '/loan/delete/' . $loan->id }}"
-                            class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">Delete</a>
+                        <a href="{{ '/loan/delete/' . $loan->id }}" class="btn btn-danger"
+                            onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">Delete</a>
                         <a href="{{ '/loan/edit/' . $loan->id }}" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
@@ -59,5 +68,4 @@
         </tbody>
     </table>
     <a href="{{ '/loan/buatPeminjaman' }}" class="btn btn-primary mb-3">+ Buat Peminjaman</a>
-    <a href="{{ '/loan/tambahData' }}" class="btn btn-primary mb-3">+ Data Peminjaman</a>
 @endsection
