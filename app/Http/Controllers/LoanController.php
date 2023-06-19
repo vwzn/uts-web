@@ -36,7 +36,7 @@ class LoanController extends Controller
         $validatedData = $request->validate([
             "notransaksi" => ['required'],
             "tgl_pinjam" => ['required', 'date'],
-            "tgl_pengembalian" => ['required', 'date', 'after:tgl_pinjam'],
+            "tgl_pengembalian" => ['required', 'date', 'after:tgl_pinjam'], //validate tglpengembalian > tglpinjam
             "peminjam" => ['required'],
             "status" => ['required'],
             "petugas" => ['required'],
