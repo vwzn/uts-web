@@ -36,3 +36,4 @@ Jika Anda menemukan masalah atau bug dalam projek ini, silakan laporkan dengan m
 
 Projek ini dilisensikan di bawah lisensi [MIT](LICENSE).
 
+![Tampilan Awal](/images/home.jpg)
