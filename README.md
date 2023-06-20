@@ -3,13 +3,13 @@
 SEWA KENDARAAN APPS
 
 ### Di Built Dengan
-* [![HTML 5][html]][html-url]
-* [![CSS 3][css]][css-url]
+* [![HTML][html]][html-url]
+* [![CSS][css]][css-url]
 * [![Javascript][Javascript]][js-url]
 * [![PHP][php]][php-url]
 * [![MySql][mysql]][mysql-url]
-* [![Laravel 10][laravel]][laravel-url]
-* [![Bootstrap 5.3][bootstrap]][bootstrap-url]
+* [![Laravel][laravel]][laravel-url]
+* [![Bootstrap][bootstrap]][bootstrap-url]
 
 [bootstrap]: https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white
 [bootstrap-url]: https://bootstrap.com/
