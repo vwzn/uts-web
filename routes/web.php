@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use App\Models\Dashboard;
 
 /*
@@ -43,6 +44,11 @@ Route::controller(LoanController::class)->group(
 Route::controller(DashboardController::class)->group(
     function (){
         Route::get('/dashboard', 'index')->name('dashboard.index');
+    }
+);
+Route::controller(UserController::class)->group(
+    function (){
+        Route::get('/login', 'login')->name('auth.login');
     }
 );
 
