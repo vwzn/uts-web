@@ -2,6 +2,35 @@
 
 SEWA KENDARAAN APPS
 
+### Di Built Dengan
+* [![HTML][html]][html-url]
+* [![CSS][css]][css-url]
+* [![Javascript][Javascript]][js-url]
+* [![PHP][php]][php-url]
+* [![MySql][mysql]][mysql-url]
+* [![Laravel][laravel]][laravel-url]
+* [![Bootstrap][bootstrap]][bootstrap-url]
+
+[bootstrap]: https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white
+[bootstrap-url]: https://bootstrap.com/
+
+[laravel]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[laravel-url]: https://laravel.com/
+
+[html]: https://img.shields.io/badge/HTML-DD4B24?style=for-the-badge&logo=html5&logoColor=white
+[html-url]: https://html.com/
+
+[css]: https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=WHITE
+[css-url]: https://css.com/
+
+[Javascript]: https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[js-url]: https://javascript.com
+
+[php]: https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white
+[php-url]: https://php.com/
+
+[mysql]: https://img.shields.io/badge/MySql-4479A1?style=for-the-badge&logo=mysql&logoColor=white
+[mysql-url]: https://mysql.com/
 ## Fitur
 
 - Fitur 1: CRUD.
