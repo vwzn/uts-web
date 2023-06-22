@@ -4,52 +4,38 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
-
+<style>
+    body {
+        background-image: url('{{ asset('images/bg.jpg') }}');
+        background-size: cover
+    }
+</style>
 <body>
-    <div class="container mt-5">
-        <form method="POST" action="">
-            @csrf
 
-            <!-- Email Address -->
-            <div class="mb-3">
-                <label for="email" class="form-label">{{ __('Email') }}</label>
-                <input id="email" class="form-control" type="email" name="email" :value="old('email')" required
-                    autofocus autocomplete="username" />
-                <error :messages="$errors->get('email')" class="mt-2" />
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="card bg-dark">
+            <div class="card-body">
+                <h1 class="text-capitalize text-light">Welcome Back</h1>
+                <form action="">
+                    @csrf
+
+                    <div class="mb-3">
+                        <input type="email" name="email" id="email" class="form-control"
+                            placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" id="password" class="form-control"
+                            placeholder="Enter your password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary text-capitalize">Login</button>
+                </form>
             </div>
-
-            <!-- Password -->
-            <div class="mb-3">
-                <label for="password" class="form-label">{{ __('Password') }}</label>
-
-                <input id="password" class="form-control" type="password" name="password" required
-                    autocomplete="current-password" />
-
-                <error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="form-check mb-3">
-                <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                <label for="remember_me" class="form-check-label">{{ __('Remember me') }}</label>
-            </div>
-
-            <div class="d-flex justify-content-end">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <button class="btn btn-primary ml-3">
-                    {{ __('Log in') }}
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
